@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MarvelSpace</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TC3004B_M4_T01_E1.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav style="background-color: #faf7dc" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <div style="display: flex; justify-content: center; align-items: center; font-family: 'Alfa Slab One', serif; font-size: 30px;">
+                        <img src="img/DevSpace2.png" style="width: 75px; margin-right: 10px;" class="rounded" alt="Ícono">
+                        MarvelSpace
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div style="margin-left: 25px;" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li style="margin-right: 15px;" class="nav-item">
+                            <a style="font-family: 'Rubik', sans-serif; font-size: 20px;" class="nav-link text-dark" asp-area="" asp-page="/Index">Tienda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a style="font-family: 'Rubik', sans-serif; font-size: 20px;" class="nav-link text-dark" asp-area="" asp-page="/Minijuego">Minijuego</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div style="font-family: 'Rubik', sans-serif;" class="container">
+            &copy; 2024 - DevSpace Consulting
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

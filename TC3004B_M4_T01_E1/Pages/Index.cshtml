@@ -1,0 +1,129 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<script>
+    function calculateTotal() {
+        var checkboxes = document.getElementsByClassName("price_checkbox");
+
+        var total = 0;
+        var selectedItems = [];
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                var itemName = checkboxes[i].closest(".col-2").querySelector(".name_product").textContent;
+                selectedItems.push(itemName);
+                total += parseInt(checkboxes[i].value);
+            }
+        }
+
+        document.getElementById("total_price").value = total.toString();
+        var totalOrder = selectedItems.join(", ");
+        document.getElementById("total_order").value = totalOrder;
+    }
+
+    function validateForm() {
+        var doctorCheckBoxInput = document.getElementById("doctor_checkbox");
+        var scarletCheckBoxInput = document.getElementById("scarlet_checkbox");
+        var spiderCheckBoxInput = document.getElementById("spider_checkbox");
+        var hawkeyeCheckBoxInput = document.getElementById("hawkeye_checkbox");
+        var ironmanCheckBoxInput = document.getElementById("ironman_checkbox");
+
+        if (!doctorCheckBoxInput.checked && !scarletCheckBoxInput.checked && !spiderCheckBoxInput.checked && !hawkeyeCheckBoxInput.checked && !ironmanCheckBoxInput.checked) {
+            document.getElementById("nameError").innerHTML = "No puedes pagar sin seleccionar un artículo.";
+            return false;
+        }
+
+        return true;
+    }
+
+    function resetError() {
+        document.getElementById("nameError").innerHTML = "";
+    }
+</script>
+
+
+<div class="text-center">
+    <center>
+        <h1><b>TIENDA MARVEL</b></h1>
+    </center>
+</div>
+
+<div class="container">
+    <div class="row">
+        <center>
+            <div style="display: flex; text-align: center; align-items: center; justify-content: center; margin-top: 10px;" class="col-10 bg-dark text-white">
+                <div><h2 style="margin-top: 0.5rem;">Compra una figura de acción de tu superhéroe favorito del universo cinematográfico de Marvel.</h2></div>
+            </div>
+        </center>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div style="display: flex; text-align: center; align-items: center; justify-content: center; margin-top: 20px;" class="row">
+        <div style="width: 255px;" class="col-2">
+            <img style="border: 2px solid black;" src="img/doctor_strange.jpg" class="card-img-top rounded" alt="Doctor Strange">
+            <h3 class="name_product" style="font-size: 23px; margin-top: 10px;" >Doctor Strange</h3>
+            <hr>
+            <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
+                <input type="checkbox" id="doctor_checkbox" class="price_checkbox" value="500" onchange="calculateTotal()" oninput="resetError()">
+                <h3 id="doctor_price" style="font-size: 25px; margin-left: 20px;">$500</h3>
+            </div>
+        </div>
+        <div style="width: 255px;" class="col-2">
+            <img style="border: 2px solid black;" src="img/scarlet_witch.jpg" class="card-img-top rounded" alt="Scarlet Witch">
+            <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Scarlet Witch</h3>
+            <hr>
+            <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
+                <input type="checkbox" id="scarlet_checkbox" class="price_checkbox" value="450" onchange="calculateTotal()" oninput="resetError()">
+                <h3 id="scarlet_price" style="font-size: 25px; margin-left: 20px;">$450</h3>
+            </div>
+        </div>
+        <div style="width: 255px;" class="col-2">
+            <img style="border: 2px solid black;" src="img/spider_man.jpg" class="card-img-top rounded" alt="Spider Man">
+            <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Spider Man</h3>
+            <hr>
+            <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
+                <input type="checkbox" id="spider_checkbox" class="price_checkbox" value="600" onchange="calculateTotal()" oninput="resetError()">
+                <h3 id="spider_price" style="font-size: 25px; margin-left: 20px;">$600</h3>
+            </div>
+        </div>
+        <div style="width: 255px;" class="col-2">
+            <img style="border: 2px solid black;" src="img/hawkeye_kate.jpg" class="card-img-top rounded" alt="Hawkeye Kate">
+            <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Hawkeye Kate</h3>
+            <hr>
+            <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
+                <input type="checkbox" id="hawkeye_checkbox" class="price_checkbox" value="350" onchange="calculateTotal()" oninput="resetError()">
+                <h3 id="hawkeye_price" style="font-size: 25px; margin-left: 20px;">$350</h3>
+            </div>
+        </div>
+        <div style="width: 255px;" class="col-2">
+            <img style="border: 2px solid black;" src="img/ironman.jpg" class="card-img-top rounded" alt="Ironman">
+            <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Ironman</h3>
+            <hr>
+            <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
+                <input type="checkbox" id="ironman_checkbox" class="price_checkbox" value="750" onchange="calculateTotal()" oninput="resetError()">
+                <h3 id="ironman_price" style="font-size: 25px; margin-left: 20px;">$750</h3>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <form style="margin-left: 0; margin-top: 0px;">
+            <span id="nameError" style="color:red; font-size: 25px;"></span>
+        </form>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <form style="margin-left: 0; margin-top: 0px;" method="post" onsubmit="return validateForm()">
+            <input class="boton" style="font-size: 35px;" type="submit" value="PAGAR" />
+            <div style="display: flex; justify-content: center; margin-top: 15px;">
+                <input style="font-size: 35px; display: none;" id="total_price" asp-for="Total">
+                <input style="font-size: 35px; display: none;" id="total_order" asp-for="Order">
+            </div>
+        </form>
+    </div>
+</div>

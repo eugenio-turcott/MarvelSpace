@@ -1,0 +1,313 @@
+﻿@page "{Total?}/{Order?}"
+@model TC3004B_M4_T01_E1.Pages.PaymentModel
+@{
+    ViewData["Title"] = "Tienda - Pago";
+}
+
+<script>
+    function formatTarjeta() {
+        // Obtener el valor del input y eliminar todos los guiones actuales
+        var tarjeta = document.getElementById("Tarjeta").value.replace(/-/g, "");
+
+        // Insertar un guión después de cada conjunto de 4 caracteres
+        var formattedTarjeta = tarjeta.replace(/(.{4})/g, "$1-");
+
+        // Eliminar el guión extra al final si existe
+        formattedTarjeta = formattedTarjeta.replace(/-$/, "");
+
+        // Establecer el valor formateado de nuevo en el input
+        document.getElementById("Tarjeta").value = formattedTarjeta;
+    }
+
+    function validateForm() {
+        var nombreInput = document.getElementById("Nombre").value;
+        var apellidoInput = document.getElementById("Apellidos").value;
+        var telefonoInput = document.getElementById("Telefono").value;
+        var calleInput = document.getElementById("Calle").value;
+        var numExtInput = document.getElementById("NumExt").value;
+        var coloniaInput = document.getElementById("Colonia").value;
+        var cpInput = document.getElementById("CP").value;
+        var numTarjetaInput = document.getElementById("Tarjeta").value;
+        var titularInput = document.getElementById("NombreTarjeta").value;
+        var fechaMMInputSelect = document.getElementById("MesVenc").value;
+        var fechaAAInputSelect = document.getElementById("AnioVenc").value;
+        var cvvInput = document.getElementById("CVV").value;
+
+        var numbers = /^[0-9\s]+$/;
+        var letters = /^[A-Za-z\s]+$/;
+        var numberswletters = /^[A-Za-z0-9\s]+$/;
+        var cardverification = /^[\d-]+$/;
+        var dash = /^-$/;
+
+        if (nombreInput === "" || apellidoInput === "" || telefonoInput === "" || calleInput === "" || numExtInput === "" || coloniaInput === "" || cpInput === "" || numTarjetaInput === "" || titularInput === "" || fechaMMInputSelect === "" || fechaAAInputSelect === "" || cvvInput === "") {
+            document.getElementById("nameError").innerHTML = "Por favor, rellena todos los campos.";
+            return false;
+        } else if (!telefonoInput.match(numbers)) {
+            document.getElementById("nameError").innerHTML = "El teléfono debe contener únicamente caracteres numéricos.";
+            return false;
+        } else if (!cpInput.match(numbers)) {
+            document.getElementById("nameError").innerHTML = "El código postal debe contener únicamente caracteres numéricos.";
+            return false;
+        } else if (!nombreInput.match(letters)) {
+            document.getElementById("nameError").innerHTML = "El/los nombre(s) debe(n) contener únicamente caracteres alfabéticos.";
+            return false;
+        } else if (!apellidoInput.match(letters)) {
+            document.getElementById("nameError").innerHTML = "Los apellidos deben contener únicamente caracteres alfabéticos.";
+            return false;
+        } else if (!calleInput.match(letters)) {
+            document.getElementById("nameError").innerHTML = "La calle debe contener únicamente caracteres alfabéticos.";
+            return false;
+        } else if (!numExtInput.match(numberswletters)) {
+            document.getElementById("nameError").innerHTML = "El número exterior debe contener únicamente caracteres alfanuméricos.";
+            return false;
+        } else if (!coloniaInput.match(numberswletters)) {
+            document.getElementById("nameError").innerHTML = "La colonia debe contener únicamente caracteres alfanuméricos.";
+            return false;
+        } else if (!numTarjetaInput.match(cardverification)) {
+            document.getElementById("nameError").innerHTML = "El número de tarjeta debe contener únicamente caracteres númericos.";
+            return false;
+        } else if (!titularInput.match(letters)) {
+            document.getElementById("nameError").innerHTML = "El nombre del titular debe contener únicamente caracteres alfabéticos.";
+            return false;
+        } else if (fechaMMInputSelect === "" || fechaAAInputSelect === "") {
+            document.getElementById("nameError").innerHTML = "Por favor, rellena la fecha de vencimiento.";
+            return false;
+        } else if (!cvvInput.match(numbers)) {
+            document.getElementById("nameError").innerHTML = "El CVV debe contener únicamente caracteres numéricos.";
+            return false;
+        }
+
+        return true;
+    }
+
+    function actualizarPrecios() {
+        var codigoPostal = document.getElementById("CP").value;
+
+        var numbers = /^[0-9\s]+$/;
+
+        if (codigoPostal.length === 5 && codigoPostal.match(numbers)) {
+            document.getElementById("ident_total").style.display = "flex";
+            document.getElementById("total").style.display = "flex";
+
+            // Obtener el subtotal actual
+            var subtotal = (parseFloat(document.getElementById("subtotal").textContent.replace("$", ""))).toFixed(2);
+
+            // Calcular el total sumando el subtotal y el costo del envío
+            var total = (subtotal * 1.16).toFixed(2);
+
+            var diffTotal = (total - subtotal).toFixed(2);
+
+            // Actualizar el texto del subtotal
+            document.getElementById("subtotal").textContent = "$" + subtotal + " + $" + diffTotal + " [Envío]";
+
+            // Actualizar el texto del total
+            document.getElementById("total").textContent = "$" + total;
+
+            // Actualizar el valor del input del total
+            document.getElementById("total_pago").value = total;
+        } else {
+            document.getElementById("ident_total").style.display = "none";
+            document.getElementById("total").style.display = "none";
+
+            // Obtener el subtotal actual
+            var subtotal = parseFloat(document.getElementById("subtotal").textContent.replace("$", ""));
+
+            // Calcular el total sumando el subtotal y el costo del envío
+            var total = subtotal;
+
+            // Actualizar el texto del subtotal
+            document.getElementById("subtotal").textContent = "$" + subtotal;
+
+            // Actualizar el texto del total
+            document.getElementById("total").textContent = "$" + total;
+
+            // Actualizar el valor del input del total
+            document.getElementById("total_pago").value = total;
+        }
+    }
+
+    function resetError() {
+        document.getElementById("nameError").innerHTML = "";
+    }
+
+    function cpFunctions() {
+        actualizarPrecios();
+        resetError();
+    }
+
+    function goBack() {
+        history.back();
+    }
+</script>
+
+<div class="text-center">
+    <div class="container">
+        <div style="display: flex; justify-content: center; align-items: center" class="row">
+            <div class="col-2">
+                <img src="img/super_icon.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+            <div class="col-6">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Pedido:</b></h3>
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">@ViewData["PaymentOrder"]</div>
+                </div>
+                <br>
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Subtotal:</b></h3>
+                    <div id="subtotal" style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">$@ViewData["PaymentTotal"]</div>
+                </div>
+            </div>
+            <div class="col-2">
+                <img src="img/super_icon_4.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row">
+            <form style="margin-left: 0px; margin-top: 40px;" class="form-payment" method="post" onsubmit="return validateForm()">
+                <div style="display: flex; justify-content: center; align-items: start">
+                    <div style="margin-right: 20px;" class="col-4">
+                        <div>
+                            <h2>DATOS PERSONALES</h2>
+                        </div>
+                        <br>
+                        <div style="display: inline-block;">
+                            <div style="display: flex; justify-content: center;">
+                                Nombre(s)
+                                <input style="width: 230px; margin-left: 10px; font-size: 20px;" placeholder="" asp-for="Nombre" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Apellidos
+                                <input style="width: 230px; margin-left: 10px; font-size: 20px;" placeholder="" asp-for="Apellidos" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Teléfono
+                                <input style="width: 230px; margin-left: 10px; font-size: 20px;" placeholder="" maxlength="10" asp-for="Telefono" oninput="resetError()" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div>
+                            <h2>DIRECCIÓN</h2>
+                        </div>
+                        <br>
+                        <div style="display: inline-block;">
+                            <div style="display: flex; justify-content: center;">
+                                Calle
+                                <input style="width: 200px; margin-left: 10px; font-size: 20px;" placeholder="" asp-for="Calle" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Número Exterior
+                                <input style="width: 130px; margin-left: 10px; font-size: 20px;" placeholder="" maxlength="5" asp-for="NumExt" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Colonia
+                                <input style="width: 200px; margin-left: 10px; font-size: 20px;" placeholder="" asp-for="Colonia" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Código Postal
+                                <input style="width: 130px; margin-left: 10px; font-size: 20px;" placeholder="" maxlength="5" asp-for="CP" oninput="cpFunctions()" />
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-left: 20px;" class="col-4">
+                        <div>
+                            <h2>DATOS DE PAGO</h2>
+                        </div>
+                        <br>
+                        <div style="display: inline-block;">
+                            <div style="display: flex; justify-content: center; font-size: 15px;">
+                                ** Pago con Tarjeta **
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Número
+                                <input style="width: 240px; margin-left: 10px; font-size: 20px;" placeholder="" maxlength="19" asp-for="Tarjeta" oninput="formatTarjeta()" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Titular
+                                <input style="width: 270px; margin-left: 10px; font-size: 20px;" placeholder="" asp-for="NombreTarjeta" oninput="resetError()" />
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                Fecha Vencimiento
+                                <select style="margin-left: 10px; font-size: 20px;" asp-for="MesVenc" oninput="resetError2()">
+                                    <option value="">MM</option>
+                                    <option value="1">01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                    <option value="4">04</option>
+                                    <option value="5">05</option>
+                                    <option value="6">06</option>
+                                    <option value="7">07</option>
+                                    <option value="8">08</option>
+                                    <option value="9">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                <select style="margin-left: 10px; font-size: 20px;" asp-for="AnioVenc" oninput="resetError2()">
+                                    <option value="">AA</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                    <option value="33">33</option>
+                                    <option value="34">34</option>
+                                    <option value="35">35</option>
+                                    <option value="36">36</option>
+                                    <option value="37">37</option>
+                                    <option value="38">38</option>
+                                    <option value="39">39</option>
+                                    <option value="40">40</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                    <option value="47">47</option>
+                                    <option value="48">48</option>
+                                    <option value="49">49</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div style="display: flex; justify-content: center;">
+                                CVV
+                                <input type="password" style="width: 100px; margin-left: 10px; font-size: 20px;" maxlength="4" placeholder="" asp-for="CVV" oninput="resetError()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <span id="nameError" style="color:red; font-size: 25px;"></span>
+                <br>
+                <hr>
+                <div style="display: flex; justify-content: center;">
+                    <div style="display: flex; justify-content: center; align-items: center" class="col-8">
+                        <h3 id="ident_total" style="display: none;"><b>Total:</b></h3>
+                        <div id="total" style="display: none; font-family: 'Rubik', sans-serif; font-size: 85px; margin-left: 15px;" class="name">$@ViewData["PaymentTotal"]</div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <a style="margin-right: 10px; cursor: pointer; color: black;" class="boton2" href="" onclick="goBack();">Regresar</a>
+                    <input class="boton" type="submit" value="Finalizar Pago" />
+                </div>
+                <input style="font-size: 35px; display: none;" id="total_order" value="@ViewData["PaymentOrder"]" asp-for="OrderNextPage">
+                <input style="font-size: 35px; display: none;" id="total_pago" value="@ViewData["PaymentTotal"]" asp-for="TotalNextPage">
+            </form>
+        </div>
+    </div>
+</div>

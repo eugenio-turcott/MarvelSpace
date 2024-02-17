@@ -1,0 +1,95 @@
+﻿@page
+@model MinijuegoModel
+@{
+    ViewData["Title"] = "Minijuego";
+}
+
+<script>
+    function validateForm() {
+        var nameInput = document.getElementById("Name").value;
+        var monthSelectInput = document.getElementById("Month").value;
+
+        var letters = /^[A-Za-z\s]+$/;
+
+        if (nameInput === "" && monthSelectInput === "") {
+            document.getElementById("nameError").innerHTML = "Por favor, ingresa tu nombre.";
+            document.getElementById("nameError2").innerHTML = "Por favor, selecciona un mes.";
+            return false;
+        } else if (nameInput === "") {
+            document.getElementById("nameError").innerHTML = "Por favor, ingresa tu nombre.";
+            return false;
+        } else if (monthSelectInput === "") {
+            document.getElementById("nameError2").innerHTML = "Por favor, selecciona un mes.";
+            return false;
+        } else if (!nameInput.match(letters)) {
+            document.getElementById("nameError").innerHTML = "Por favor, ingresa solo caracteres alfabéticos.";
+            return false;
+        }
+
+        return true;
+    }
+
+    function resetError() {
+        document.getElementById("nameError").innerHTML = "";
+    }
+
+    function resetError2() {
+        document.getElementById("nameError2").innerHTML = "";
+    }
+</script>
+
+<div class="text-center">
+    <h1 style="font-size: 53px;"><b>¿CUÁL ES TU NOMBRE DE SUPERHÉROE?</b></h1>
+</div>
+<div class="container">
+    <div class="row">
+        <center>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;" class="col-5 bg-dark text-white">
+                <div><h2 style="font-size: 20px; margin-top: 0.5rem;"><i>Hecho por: </i></h2></div>
+                <div style="margin-left: 10px; margin-top: 0.5rem;"><h2>DevSpace Co.</h2></div>
+            </div>
+        </center>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    <div style="margin-top: 20px;" class="row">
+        <div class="col-6">
+            <img src="img/mysterious_superhero.jpg" class="card-img-top rounded" alt="Guess">
+        </div>
+        <div class="col-6">
+            <form method="post" onsubmit="return validateForm()">
+                Ingresa tu nombre:
+                <br>
+                <input style="font-size: 30px;" placeholder="Chuyito" asp-for="Name" oninput="resetError()" />
+                <br>
+                <span id="nameError" style="color:red; font-size: 25px;"></span>
+                <br>
+                Selecciona tu mes de nacimiento:
+                <br>
+                <select style="font-size: 30px;" asp-for="Month" oninput="resetError2()">
+                    <option value="">--Elige tu mes--</option>
+                    <option value="January">Enero</option>
+                    <option value="February">Febrero</option>
+                    <option value="March">Marzo</option>
+                    <option value="April">Abril</option>
+                    <option value="May">Mayo</option>
+                    <option value="June">Junio</option>
+                    <option value="July">Julio</option>
+                    <option value="August">Agosto</option>
+                    <option value="September">Septiembre</option>
+                    <option value="October">Octubre</option>
+                    <option value="November">Noviembre</option>
+                    <option value="December">Diciembre</option>
+                </select>
+                <div></div>
+                <span id="nameError2" style="color:red; font-size: 25px;"></span>
+                <br>
+                <input class="boton" type="submit" value="Descubrir" />
+            </form>
+        </div>
+    </div>
+</div>

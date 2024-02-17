@@ -1,0 +1,59 @@
+﻿@page "{Pedido?}/{Order?}/{Nombre?}/{Direccion?}/{Pago?}/{Total?}"
+@model TC3004B_M4_T01_E1.Pages.SuccessfulModel
+@{
+    ViewData["Title"] = "Tienda - Pago - Resultado";
+}
+
+<div class="text-center">
+    <div class="container">
+        <div style="display: flex; justify-content: center; align-items: center" class="row">
+            <div class="col-2">
+                <img src="img/green_check.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+            <div class="col-6">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div style="font-family: 'Alfa Slab One', serif; font-size: 75px;" class="name">PAGO EXITOSO</div>
+                </div>
+            </div>
+            <div class="col-2">
+                <img src="img/green_check.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+        </div>
+        <hr>
+        <div style="display: flex; justify-content: center; align-items: center" class="row">
+            <div class="col-12">
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 55px; margin-left: 15px;" class="name">RECIBO - Pedido #@ViewData["PaymentSuccessPedido"]</div>
+                </div>
+                <br>
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Orden:</b></h3>
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">@ViewData["PaymentSuccessOrder"]</div>
+                </div>
+                <br>
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Nombre:</b></h3>
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">@ViewData["PaymentSuccessNombre"]</div>
+                </div>
+                <br>
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Dirección:</b></h3>
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">@ViewData["PaymentSuccessDireccion"]</div>
+                </div>
+                <br>
+                <div style="display: flex; justify-content: center; align-items: center">
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Pago:</b></h3>
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">@ViewData["PaymentSuccessPago"]</div>
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px; margin-left: 30px;"><b>Total:</b></h3>
+                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">$@ViewData["PaymentSuccessTotal"]</div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div style="display: flex; justify-content: center;">
+                <a style="cursor: pointer; color: black;" class="boton3" href="/Minijuego">JUGAR MINIJUEGO</a>
+            </div>
+        </div>
+    </div>
+</div>

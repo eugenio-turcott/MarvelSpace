@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap');
+
+html {
+    font-size: 14px;
+    font-family: 'Rubik', sans-serif;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+        font-family: 'Rubik', sans-serif;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #84d6ff;
+}
+
+h1 {
+    font-size: 60px;
+    font-family: 'Alfa Slab One', serif;
+}
+
+h2 {
+    font-family: 'Rubik', sans-serif;
+}
+
+h3 {
+    font-family: 'Rubik', sans-serif;
+}
+
+form {
+    margin-left: 60px;
+    margin-top: 20px;
+    font-size: 35px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.form-payment {
+    font-size: 23px;
+    font-family: 'Rubik', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.boton {
+    margin-top: 10px;
+    background-color: #00E656;
+    font-family: 'Rubik', sans-serif;
+}
+
+.boton2 {
+    margin-top: 10px;
+    background-color: #ff4f4f;
+    font-family: 'Rubik', sans-serif;
+    padding: 7px;
+}
+
+.boton3 {
+    margin-top: 20px;
+    background-color: #00E656;
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+    padding: 7px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 90px;
+    font-family: 'Rubik', sans-serif;
+}
+
+img.super {
+    width: 80%;
+}
+
+.price_checkbox {
+    transform: scale(2); /* Ajusta el valor para aumentar o disminuir el tamaño del checkbox */
+}

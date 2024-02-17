@@ -1,0 +1,40 @@
+﻿@page "{Message1?}/{Message2?}"
+@model TC3004B_M4_T01_E1.Pages.ResultModel
+@{
+    ViewData["Title"] = "Minijuego - Resultado";
+}
+
+<div class="text-center">
+    <h3><b>Tu Nombre de Superhéroe es:</b></h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="img/super_icon.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+            <div class="col-8">
+                <div style="font-family: 'Alfa Slab One', serif;" class="name">@ViewData["ResultMessage1"]@ViewData["ResultMessage2"]</div>
+            </div>
+            <div class="col-2">
+                <img src="img/super_icon_4.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <img src="img/super_icon_2.png" class="card-img-top rounded" alt="Ícono">
+                <img src="img/super_icon_3.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+            <div class="col-8">
+                <img class="super card-img-top rounded" src="img/superheroes.jpg" alt="Superheroes">
+            </div>
+            <div class="col-2">
+                <img src="img/super_icon_5.png" class="card-img-top rounded" alt="Ícono">
+                <img src="img/super_icon_6.png" class="card-img-top rounded" alt="Ícono">
+            </div>
+        </div>
+        <div class="row">
+            <div style="display: flex; justify-content: center;">
+                <a style="cursor: pointer; color: black;" class="boton3" href="/Minijuego">Volver a Intentarlo</a>
+            </div>
+        </div>
+    </div>
+</div>
