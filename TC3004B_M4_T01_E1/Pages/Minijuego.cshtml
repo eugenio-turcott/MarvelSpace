@@ -2,6 +2,8 @@
 @model MinijuegoModel
 @{
     ViewData["Title"] = "Minijuego";
+   
+
 }
 
 <script>
@@ -38,15 +40,29 @@
     }
 </script>
 
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #FAF7DC;
+        }
+    </style>
+</head>
+<body>
+
 <div class="text-center">
-    <h1 style="font-size: 53px;"><b>¿CUÁL ES TU NOMBRE DE SUPERHÉROE?</b></h1>
+        <h1 style="font-size: 53px; color: #233a6c"><b>¿CUÁL ES TU NOMBRE DE SUPERHÉROE?</b></h1>
 </div>
 <div class="container">
     <div class="row">
         <center>
-            <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;" class="col-5 bg-dark text-white">
-                <div><h2 style="font-size: 20px; margin-top: 0.5rem;"><i>Hecho por: </i></h2></div>
-                <div style="margin-left: 10px; margin-top: 0.5rem;"><h2>DevSpace Co.</h2></div>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;" class="col-5">
+                    
+                    <div style="margin-left: 10px; margin-top: 0.5rem;color: #233a6c"><h2>DevSpace Co.</h2></div>
             </div>
         </center>
     </div>
@@ -58,20 +74,20 @@
     </div>
     <div style="margin-top: 20px;" class="row">
         <div class="col-6">
-            <img src="img/mysterious_superhero.jpg" class="card-img-top rounded" alt="Guess">
+            <img src="img/Equipo.png" class="card-img-top rounded" alt="Guess">
         </div>
         <div class="col-6">
             <form method="post" onsubmit="return validateForm()">
                 Ingresa tu nombre:
                 <br>
-                <input style="font-size: 30px;" placeholder="Chuyito" asp-for="Name" oninput="resetError()" />
+                    <input style="font-size: 30px;width: 100%; height: 100%; " placeholder="Nombre" asp-for="Name" oninput="resetError()" maxlength="200" />
                 <br>
                 <span id="nameError" style="color:red; font-size: 25px;"></span>
                 <br>
                 Selecciona tu mes de nacimiento:
                 <br>
-                <select style="font-size: 30px;" asp-for="Month" oninput="resetError2()">
-                    <option value="">--Elige tu mes--</option>
+                    <select style="font-size: 30px; width: 100%; height: 100%;" asp-for="Month" oninput="resetError2()">
+                    <option value="">  Elige tu mes  </option>
                     <option value="January">Enero</option>
                     <option value="February">Febrero</option>
                     <option value="March">Marzo</option>
@@ -88,8 +104,19 @@
                 <div></div>
                 <span id="nameError2" style="color:red; font-size: 25px;"></span>
                 <br>
-                <input class="boton" type="submit" value="Descubrir" />
+                    <style>
+                        .boton {
+                            transition: box-shadow 0.3s ease;
+                        }
+
+                            .boton:hover {
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                    </style>
+                    <input style=" border-radius: 20px; background-color: #233a6c;  color: white; font-weight: bold; text-align: center" class="boton" type="submit" value="Descubrir" />
             </form>
         </div>
     </div>
 </div>
+
+</body>
+</html>

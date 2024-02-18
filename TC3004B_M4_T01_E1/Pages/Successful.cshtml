@@ -4,21 +4,37 @@
     ViewData["Title"] = "Tienda - Pago - Resultado";
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #FAF7DC;
+        }
+    </style>
+</head>
+<body>
+
 <div class="text-center">
     <div class="container">
+      
+      
+
         <div style="display: flex; justify-content: center; align-items: center" class="row">
             <div class="col-2">
-                <img src="img/green_check.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
             </div>
             <div class="col-6">
                 <div style="display: flex; justify-content: center; align-items: center">
-                    <div style="font-family: 'Alfa Slab One', serif; font-size: 75px;" class="name">PAGO EXITOSO</div>
+                        <div style="font-family: 'Alfa Slab One', serif; font-size: 75px; color:#233a6c" class="name">PAGO EXITOSO</div>
                 </div>
             </div>
             <div class="col-2">
-                <img src="img/green_check.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
             </div>
         </div>
+      
         <hr>
         <div style="display: flex; justify-content: center; align-items: center" class="row">
             <div class="col-12">
@@ -52,8 +68,19 @@
         <hr>
         <div class="row">
             <div style="display: flex; justify-content: center;">
-                <a style="cursor: pointer; color: black;" class="boton3" href="/Minijuego">JUGAR MINIJUEGO</a>
+                    <style>
+                        .boton {
+                            transition: box-shadow 0.3s ease;
+                        }
+
+                            .boton:hover {
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                    </style>
+                    <a style="color: white; background-color: #233a6c; border-radius: 20px; font-weight: bold; font-size: 35;" class="boton" href="/Minijuego">JUGAR MINIJUEGO</a>
             </div>
         </div>
     </div>
 </div>
+
+</body>
+</html>

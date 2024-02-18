@@ -140,35 +140,56 @@
     }
 </script>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #FAF7DC;
+        }
+    </style>
+</head>
+<body>
+
 <div class="text-center">
     <div class="container">
+           
+      <div style="background-image: url(img/dash3.0.png);" class="fondo">
+
         <div style="display: flex; justify-content: center; align-items: center" class="row">
             <div class="col-2">
-                <img src="img/super_icon.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
             </div>
             <div class="col-6">
                 <div style="display: flex; justify-content: center; align-items: center">
-                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Pedido:</b></h3>
-                    <div style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">@ViewData["PaymentOrder"]</div>
-                </div>
+                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Pedido</b></h3><br>
+                    </div>
+
+                    <br><div style="font-family: 'Rubik', sans-serif; font-size: 35px; font-weight: bold; color: #233a6c; margin-left: 15px;" class="name">@ViewData["PaymentOrder"]</div>
+                
                 <br>
                 <div style="display: flex; justify-content: center; align-items: center">
                     <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Subtotal:</b></h3>
-                    <div id="subtotal" style="font-family: 'Rubik', sans-serif; font-size: 35px; margin-left: 15px;" class="name">$@ViewData["PaymentTotal"]</div>
+                    <div id="subtotal" style="font-family: 'Rubik', sans-serif; font-size: 25px; margin-left: 15px;" class="name">$@ViewData["PaymentTotal"]</div>
                 </div>
             </div>
             <div class="col-2">
-                <img src="img/super_icon_4.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
             </div>
         </div>
         <br>
         <hr>
+
+      </div>
+
+
         <div class="row">
             <form style="margin-left: 0px; margin-top: 40px;" class="form-payment" method="post" onsubmit="return validateForm()">
                 <div style="display: flex; justify-content: center; align-items: start">
                     <div style="margin-right: 20px;" class="col-4">
                         <div>
-                            <h2>DATOS PERSONALES</h2>
+                                <h2 style="color:#233a6c; font-weight: bold;">DATOS PERSONALES</h2>
                         </div>
                         <br>
                         <div style="display: inline-block;">
@@ -190,7 +211,7 @@
                     </div>
                     <div class="col-4">
                         <div>
-                            <h2>DIRECCIÓN</h2>
+                                <h2 style="color:#233a6c; font-weight: bold;">DIRECCIÓN</h2>
                         </div>
                         <br>
                         <div style="display: inline-block;">
@@ -217,7 +238,7 @@
                     </div>
                     <div style="margin-left: 20px;" class="col-4">
                         <div>
-                            <h2>DATOS DE PAGO</h2>
+                                <h2 style="color:#233a6c; font-weight: bold;">DATOS DE PAGO</h2>
                         </div>
                         <br>
                         <div style="display: inline-block;">
@@ -302,8 +323,16 @@
                     </div>
                 </div>
                 <div style="display: flex; justify-content: center;">
-                    <a style="margin-right: 10px; cursor: pointer; color: black;" class="boton2" href="" onclick="goBack();">Regresar</a>
-                    <input class="boton" type="submit" value="Finalizar Pago" />
+                        <style>
+                            .boton {
+                                transition: box-shadow 0.3s ease;
+                            }
+
+                                .boton:hover {
+                                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                        </style>
+                        <a style="margin-right: 10px; cursor: pointer; color: white; background-color: #ff5132; border-radius: 20px; font-weight: bold;" class="boton" href="" onclick="goBack();"><b>Regresar</b></a>
+                        <input style="color: white; background-color: #233a6c; border-radius: 20px; font-weight: bold;" class="boton" type="submit" value="Finalizar Pago" />
                 </div>
                 <input style="font-size: 35px; display: none;" id="total_order" value="@ViewData["PaymentOrder"]" asp-for="OrderNextPage">
                 <input style="font-size: 35px; display: none;" id="total_pago" value="@ViewData["PaymentTotal"]" asp-for="TotalNextPage">
@@ -311,3 +340,6 @@
         </div>
     </div>
 </div>
+
+</body>
+</html>

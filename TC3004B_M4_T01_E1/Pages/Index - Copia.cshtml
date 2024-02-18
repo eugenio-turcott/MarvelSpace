@@ -44,30 +44,18 @@
     }
 </script>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@ViewData["Title"]</title>
-    <style>
-        body {
-            background-color: #FAF7DC; 
-        }
-    </style>
-</head>
-<body>
-
 
 <div class="text-center">
     <center>
-        <h1 style="color: #233a6c"><b>TIENDA MARVEL</b></h1>
+        <h1><b>TIENDA MARVEL</b></h1>
     </center>
 </div>
 
 <div class="container">
     <div class="row">
         <center>
-            <div style="display: flex; text-align: center; align-items: center; justify-content: center; margin-top: 10px;" class="col-10">
-                    <div><h2 style="margin-top: 0.5rem;color: #233a6c;">Compra una figura de acción de tu superhéroe favorito del universo cinematográfico de Marvel.</h2></div>
+            <div style="display: flex; text-align: center; align-items: center; justify-content: center; margin-top: 10px;" class="col-10 bg-dark text-white">
+                <div><h2 style="margin-top: 0.5rem;">Compra una figura de acción de tu superhéroe favorito del universo cinematográfico de Marvel.</h2></div>
             </div>
         </center>
     </div>
@@ -79,27 +67,16 @@
     </div>
     <div style="display: flex; text-align: center; align-items: center; justify-content: center; margin-top: 20px;" class="row">
         <div style="width: 255px;" class="col-2">
-                <img style="" src="img/DoctorStrange.png" class="card-img-top rounded doctor-img" alt="Doctor Strange">
-                <style>
-                    .doctor-img {
-                        transition: transform 0.3s, box-shadow 0.3s;
-                    }
-
-                        .doctor-img:hover {
-                            transform: scale(1.05);
-                            
-                        }
-                </style>
+            <img style="border: 2px solid black;" src="img/doctor_strange.jpg" class="card-img-top rounded" alt="Doctor Strange">
             <h3 class="name_product" style="font-size: 23px; margin-top: 10px;" >Doctor Strange</h3>
             <hr>
             <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
                 <input type="checkbox" id="doctor_checkbox" class="price_checkbox" value="500" onchange="calculateTotal()" oninput="resetError()">
                 <h3 id="doctor_price" style="font-size: 25px; margin-left: 20px;">$500</h3>
             </div>
-
         </div>
         <div style="width: 255px;" class="col-2">
-                <img style="" src="img/Scarlet.png" class="card-img-top rounded doctor-img" alt="Scarlet Witch">
+            <img style="border: 2px solid black;" src="img/scarlet_witch.jpg" class="card-img-top rounded" alt="Scarlet Witch">
             <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Scarlet Witch</h3>
             <hr>
             <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
@@ -107,10 +84,8 @@
                 <h3 id="scarlet_price" style="font-size: 25px; margin-left: 20px;">$450</h3>
             </div>
         </div>
-
-
         <div style="width: 255px;" class="col-2">
-                <img style="" src="img/SpiderMan.png" class="card-img-top rounded doctor-img" alt="Spider Man">
+            <img style="border: 2px solid black;" src="img/spider_man.jpg" class="card-img-top rounded" alt="Spider Man">
             <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Spider Man</h3>
             <hr>
             <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
@@ -118,9 +93,8 @@
                 <h3 id="spider_price" style="font-size: 25px; margin-left: 20px;">$600</h3>
             </div>
         </div>
-
         <div style="width: 255px;" class="col-2">
-                <img style="" src="img/Kate.png" class="card-img-top rounded doctor-img" alt="Hawkeye Kate">
+            <img style="border: 2px solid black;" src="img/hawkeye_kate.jpg" class="card-img-top rounded" alt="Hawkeye Kate">
             <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Hawkeye Kate</h3>
             <hr>
             <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
@@ -128,9 +102,8 @@
                 <h3 id="hawkeye_price" style="font-size: 25px; margin-left: 20px;">$350</h3>
             </div>
         </div>
-
         <div style="width: 255px;" class="col-2">
-                <img style="" src="img/IronMan.png" class="card-img-top rounded doctor-img" alt="Ironman">
+            <img style="border: 2px solid black;" src="img/ironman.jpg" class="card-img-top rounded" alt="Ironman">
             <h3 class="name_product" style="font-size: 23px; margin-top: 10px;">Ironman</h3>
             <hr>
             <div style="display: flex; justify-content: center; text-align: center; align-items: center;">
@@ -146,16 +119,7 @@
     </div>
     <div style="display: flex; justify-content: center; margin-top: 20px;">
         <form style="margin-left: 0; margin-top: 0px;" method="post" onsubmit="return validateForm()">
-                <style>
-                    .boton {
-                        transition: box-shadow 0.3s ease; 
-                    }
-
-                        .boton:hover {
-                            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
-                </style>
-
-                <input class="boton" style="font-size: 35px; background-color: #233a6c; border-radius: 20px; color: white; font-weight: bold;" type="submit" value="PAGAR" />
+            <input class="boton" style="font-size: 35px;" type="submit" value="PAGAR" />
             <div style="display: flex; justify-content: center; margin-top: 15px;">
                 <input style="font-size: 35px; display: none;" id="total_price" asp-for="Total">
                 <input style="font-size: 35px; display: none;" id="total_order" asp-for="Order">
@@ -163,6 +127,3 @@
         </form>
     </div>
 </div>
-
-</body>
-</html>

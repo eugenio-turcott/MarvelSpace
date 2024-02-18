@@ -4,37 +4,64 @@
     ViewData["Title"] = "Minijuego - Resultado";
 }
 
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-image: url(img/fondo2.0.png);
+            
+            
+        }
+    </style>
+</head>
+<body>
+
 <div class="text-center">
-    <h3><b>Tu Nombre de Superhéroe es:</b></h3>
+        <h3 style="color: #233a6c"><b>Tu Nombre de Superhéroe es:</b></h3>
     <div class="container">
         <div class="row">
             <div class="col-2">
-                <img src="img/super_icon.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
             </div>
             <div class="col-8">
-                <div style="font-family: 'Alfa Slab One', serif;" class="name">@ViewData["ResultMessage1"]@ViewData["ResultMessage2"]</div>
+                    <div style="font-family: 'Alfa Slab One', serif; color: #233a6c" class="name">@ViewData["ResultMessage1"]@ViewData["ResultMessage2"]</div>
             </div>
             <div class="col-2">
-                <img src="img/super_icon_4.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
             </div>
         </div>
         <div class="row">
             <div class="col-2">
-                <img src="img/super_icon_2.png" class="card-img-top rounded" alt="Ícono">
-                <img src="img/super_icon_3.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
+                <img  class="card-img-top rounded" >
             </div>
             <div class="col-8">
-                <img class="super card-img-top rounded" src="img/superheroes.jpg" alt="Superheroes">
+                <img style="width: 400px;"class="super card-img-top rounded" src="img/Resultado1.0.png" alt="Superheroes">
             </div>
             <div class="col-2">
-                <img src="img/super_icon_5.png" class="card-img-top rounded" alt="Ícono">
-                <img src="img/super_icon_6.png" class="card-img-top rounded" alt="Ícono">
+                <img  class="card-img-top rounded" >
+                <img  class="card-img-top rounded" >
             </div>
         </div>
         <div class="row">
             <div style="display: flex; justify-content: center;">
-                <a style="cursor: pointer; color: black;" class="boton3" href="/Minijuego">Volver a Intentarlo</a>
+                    <style>
+                        .boton {
+                            transition: box-shadow 0.3s ease;
+                        }
+
+                            .boton:hover {
+                                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                    </style>
+
+                    <a style="font-size: 30px; background-color: #233a6c; border-radius: 20px; color: white; font-weight: bold;" class="boton" href="/Minijuego">Volver a Intentarlo</a>
             </div>
         </div>
     </div>
 </div>
+
+</body>
+</html>

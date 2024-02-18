@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <Compile Remove="Pages\Index - Copia.cshtml.cs" />
+    <Compile Remove="Pages\Principal.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Index - Copia.cshtml" />
   </ItemGroup>
 
 </Project>
