@@ -155,8 +155,9 @@
 <div class="text-center">
     <div class="container">
            
-      <div style="background-image: url(img/dash3.0.png); background-repeat: no-repeat; background-size: cover;" class="fondo">
-
+      <div style="background-image: url(img/dash3.1.png); background-repeat: no-repeat; background-size: cover; border-left: 1px solid gray; border-right: 1px solid gray;" class="fondo">
+                <hr>
+                <br>
         <div style="display: flex; justify-content: center; align-items: center" class="row">
             <div class="col-2">
                 <img  class="card-img-top rounded" >
@@ -169,9 +170,11 @@
                     <br><div style="font-family: 'Rubik', sans-serif; font-size: 35px; font-weight: bold; color: #233a6c; margin-left: 15px;" class="name">@ViewData["PaymentOrder"]</div>
                 
                 <br>
-                <div style="display: flex; justify-content: center; align-items: center">
-                    <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px;"><b>Subtotal:</b></h3>
-                    <div id="subtotal" style="font-family: 'Rubik', sans-serif; font-size: 25px; margin-left: 15px;" class="name">$@ViewData["PaymentTotal"]</div>
+                <div style="display: inline-block; background-color: black; border: 3px solid white;">
+                    <div style="display: flex; justify-content: center; align-items: center; padding: 7px;">
+                                <h3 style="font-family: 'Rubik', sans-serif; font-size: 25px; color: #FAF7DC;"><b>Subtotal:</b></h3>
+                                <div id="subtotal" style="font-family: 'Rubik', sans-serif; font-size: 25px; margin-left: 15px; color: #FAF7DC;" class="name">$@ViewData["PaymentTotal"]</div>
+                    </div>
                 </div>
             </div>
             <div class="col-2">
@@ -330,8 +333,9 @@
 
                                 .boton:hover {
                                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                                }
                         </style>
-                        <a style="margin-right: 10px; cursor: pointer; color: white; background-color: #ff5132; border-radius: 20px; font-weight: bold;" class="boton" href="" onclick="goBack();"><b>Regresar</b></a>
+                        <a style="margin-right: 10px; cursor: pointer; color: white; background-color: #ff5132; border-radius: 20px; font-weight: bold; padding: 7px;" class="boton" href="" onclick="goBack();"><b>Regresar</b></a>
                         <input style="color: white; background-color: #233a6c; border-radius: 20px; font-weight: bold;" class="boton" type="submit" value="Finalizar Pago" />
                 </div>
                 <input style="font-size: 35px; display: none;" id="total_order" value="@ViewData["PaymentOrder"]" asp-for="OrderNextPage">
